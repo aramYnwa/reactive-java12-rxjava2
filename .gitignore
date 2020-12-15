@@ -1,5 +1,12 @@
 # Compiled class file
 *.class
+target
+
+# IDEA files
+.idea/
+
+#MAC files
+.DS_Store
 
 # Log file
 *.log
