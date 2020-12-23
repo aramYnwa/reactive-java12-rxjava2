@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class GateBasedSynchronization {
-  private final Logger LOG = LoggerFactory.getLogger(GateBasedSynchronization.class);
+  private final Logger log = LoggerFactory.getLogger(GateBasedSynchronization.class);
 
   private HashSet<String> openGateNames;
 
@@ -23,7 +23,7 @@ public class GateBasedSynchronization {
         wait();
       }
     } catch (InterruptedException e) {
-      LOG.warn(String.format("InterruptException while waiting for gate %s", gateName), e);
+      log.warn(String.format("InterruptException while waiting for gate %s", gateName), e);
     }
   }
 
@@ -39,7 +39,7 @@ public class GateBasedSynchronization {
       }
     } catch (InterruptedException e) {
       String gateNameList = generateGateNameList(searchGateNames);
-      LOG.warn(String.format("InterruptException while waiting for gates %s", gateNameList), e);
+      log.warn(String.format("InterruptException while waiting for gates %s", gateNameList), e);
     }
   }
 
@@ -61,7 +61,7 @@ public class GateBasedSynchronization {
       }
     } catch (InterruptedException e) {
       String gateNameList = generateGateNameList(searchGateNames);
-      LOG.warn(String.format( "InterruptedException while waiting for gate(s) '%s'", gateNameList), e);
+      log.warn(String.format( "InterruptedException while waiting for gate(s) '%s'", gateNameList), e);
     }
   }
 
@@ -76,7 +76,7 @@ public class GateBasedSynchronization {
       }
     } catch (InterruptedException e) {
       String gateNameList = generateGateNameList(searchGateNames);
-      LOG.warn(String.format( "InterruptedException while waiting for all gates '%s'", gateNameList), e);
+      log.warn(String.format( "InterruptedException while waiting for all gates '%s'", gateNameList), e);
     }
   }
 

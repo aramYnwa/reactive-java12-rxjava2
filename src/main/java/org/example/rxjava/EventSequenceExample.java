@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class EventSequenceExample {
 
-  private static Logger LOG = LoggerFactory.getLogger(EventSequenceExample.class);
+  private static Logger log = LoggerFactory.getLogger(EventSequenceExample.class);
 
   public static void main(String[] args) {
 
@@ -26,17 +26,17 @@ public class EventSequenceExample {
 
         @Override
         public void onSubscribe(Disposable disposable) {
-          LOG.info("onSubscribe");
+          log.info("onSubscribe");
         }
 
         @Override
         public void onNext(String nextLetter) {
-          LOG.info("onNext - {}", nextLetter);
+          log.info("onNext - {}", nextLetter);
         }
 
         @Override
         public void onError(Throwable throwable) {
-          LOG.error("onError - {}", throwable.getMessage());
+          log.error("onError - {}", throwable.getMessage());
 
           // To let main thread go on we gonna open gait for "onError"
           gate.openGate("onError");
@@ -47,7 +47,7 @@ public class EventSequenceExample {
         // Likewise if this is called, onError won't happen.
         @Override
         public void onComplete() {
-          LOG.info("onComplete");
+          log.info("onComplete");
           gate.openGate("onComplete");
         }
       });
