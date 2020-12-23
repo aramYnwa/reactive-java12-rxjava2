@@ -12,14 +12,14 @@ import org.slf4j.LoggerFactory;
 public class SingleSubscriber<TEvent> implements SingleObserver<TEvent> {
 
   private static final Logger log = LoggerFactory.getLogger(SingleSubscriber.class);
-  private GateBasedSynchronization gate;
-  private String errorGetName;
-  private String successGateName;
+  private final GateBasedSynchronization gate;
+  private final String errorGetName;
+  private final String successGateName;
 
-  public SingleSubscriber(GateBasedSynchronization gate, String errorGetName, String successGateName) {
-    this.gate = gate;
-    this.errorGetName = errorGetName;
-    this.successGateName = successGateName;
+  public SingleSubscriber() {
+    this.gate = new GateBasedSynchronization();
+    this.errorGetName = "onError";
+    this.successGateName = "onSuccess";
   }
 
   @Override
